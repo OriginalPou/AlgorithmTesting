@@ -2,15 +2,17 @@ package NES;
 
 import java.util.ArrayList;
 import java.util.Random;
+import TP_Algo.DataGenerator;
 
-public class DataGenerator {
+public class NES_DataGenerator extends DataGenerator {
 	
 	private int complexity;
 	private int numberGenerated;
 	private int[] coinsGenerated;
 	private int[] memorisedCases;
 	
-	public DataGenerator(int N) {
+	
+	public NES_DataGenerator(int N) {
 		this.complexity=N;
 		this.generateNumber();
 		this.generateCoins();
@@ -72,5 +74,15 @@ public class DataGenerator {
 
 	public int[] getMemorisedCases() {
 		return memorisedCases;
+	}
+
+	@Override
+	public Object[] generateData() {
+		// TODO Auto-generated method stub
+		Object [] data = new Object[3];
+		data[0]=this.getNumberGenerated();
+		data[1]=this.getCoinsGenerated();
+		data[2]=this.getMemorisedCases();
+		return data;
 	}	
 }

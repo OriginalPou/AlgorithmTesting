@@ -8,7 +8,7 @@ public class Main {
 	
 	private static int nbop = 0;
 	
-	public static void main(String[] args) throws FileNotFoundException  {
+	/*public static void main(String[] args) throws FileNotFoundException  {
 
 		for (int i = 0; i <5 ; i ++) {
 			DataGenerator data = new DataGenerator(2);
@@ -26,7 +26,7 @@ public class Main {
 			nbop=0;
 			print(res,"nbopAvecMemo/"+res[0]+".csv");
 		}
-		
+		}
 		
 		
 		
@@ -75,7 +75,6 @@ public class Main {
 			System.out.print(D[i]);
 		}*/
 	
-	}
 	
 	public static int sumR_M(int number, int[] D,int[] coins) {
 		
