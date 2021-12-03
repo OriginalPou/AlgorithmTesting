@@ -1,5 +1,7 @@
 package TP_Algo;
 
+import PLSS.Algorithms;
+import PLSS.PllsDataGenerator;
 import NES.NES_DataGenerator;
 import NES.NES_Algorithms;
 
@@ -21,6 +23,13 @@ public class AlgorithmTester {
 		System.out.println(constructor);
 		*/
 		
+		Method plsscDynamique_Env= Algorithms.class.getMethod("plsscDynamique_Env", Object[].class);
+		
+		Object[] res_PLSS = testAlgorithm(PllsDataGenerator.class,5,plsscDynamique_Env);
+		
+		print(res_PLSS,"BOOM_PLSS/"+res_PLSS[0]+".csv");
+		
+		
 		Method sumR_M_Envolope = NES_Algorithms.class.getMethod("sumR_M_Envolope", Object[].class);
 		
 		Object[] res =testAlgorithm(NES_DataGenerator.class, 0, sumR_M_Envolope);
@@ -36,6 +45,9 @@ public class AlgorithmTester {
 		DataGenerator data =(DataGenerator) constructor.newInstance(complexity);;
 		Object[] data_generated = data.generateData();
 		
+		System.out.println(constructor);
+		System.out.println(algorithm);
+		
 		int index=1;
 		
 		while (true) {
@@ -44,6 +56,7 @@ public class AlgorithmTester {
 				return (Object[]) (algorithm.invoke(null, new Object[]{needed_data}));
 			}
 			catch (Exception e) {
+				System.out.println(e.getCause());
 				if(index < data_generated.length) {
 					index++;
 				}else {
