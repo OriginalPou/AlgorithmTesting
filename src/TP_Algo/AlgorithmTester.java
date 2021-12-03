@@ -3,6 +3,9 @@ package TP_Algo;
 import NES.NES_DataGenerator;
 import NES.NES_Algorithms;
 
+import SACDOS.SACDOS_Algorithms;
+import SACDOS.SACDOS_DataGenerator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -21,11 +24,19 @@ public class AlgorithmTester {
 		System.out.println(constructor);
 		*/
 		
-		Method sumR_M_Envolope = NES_Algorithms.class.getMethod("sumR_M_Envolope", Object[].class);
+		/*Method sumR_M_Envolope = NES_Algorithms.class.getMethod("sumR_M_Envolope", Object[].class);
 		
 		Object[] res =testAlgorithm(NES_DataGenerator.class, 0, sumR_M_Envolope);
 		
-		print(res, "BOOM/"+ res[0]+ ".csv");
+		print(res, "BOOM/"+ res[0]+ ".csv");*/
+		
+		//test sacados
+		
+		Method ProfitMax_Dyn_Envolope = SACDOS_Algorithms.class.getMethod("ProfitMax_Dyn_Envolope", Object[].class);
+		
+		Object[] res2=testAlgorithm(SACDOS_DataGenerator.class,4, ProfitMax_Dyn_Envolope); //4 is N
+		
+		print(res2, "BOOM_SACDOS/"+ res2[0]+".csv");
 		
 		
 	}
@@ -36,6 +47,13 @@ public class AlgorithmTester {
 		DataGenerator data =(DataGenerator) constructor.newInstance(complexity);;
 		Object[] data_generated = data.generateData();
 		
+		System.out.println(constructor);
+		System.out.println(algorithm);
+		
+		for (int i=0;i<data_generated.length;i++) {
+			System.out.println(data_generated[i]);
+		}
+		
 		int index=1;
 		
 		while (true) {
@@ -44,6 +62,7 @@ public class AlgorithmTester {
 				return (Object[]) (algorithm.invoke(null, new Object[]{needed_data}));
 			}
 			catch (Exception e) {
+				System.out.println(e);
 				if(index < data_generated.length) {
 					index++;
 				}else {
