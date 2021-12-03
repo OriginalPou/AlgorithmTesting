@@ -47,7 +47,7 @@ public class SACDOS_Algorithms {
 	//Dynamique Envelope
 		public static Object[] ProfitMax_Dyn_Envolope(Object[] data) throws Exception{
 			if (data.length!=4) {
-				throw new Exception("Wrong Input - ProfitMax_Dyn ");
+				throw new Exception("Wrong Input ");
 			}
 			nbop=0;
 			
@@ -76,7 +76,7 @@ public class SACDOS_Algorithms {
 	//Recurive Envelope
 		public static Object[] ProfitMax_Rec_Envolope(Object[] data) throws Exception{
 			if (data.length!=4) {
-				throw new Exception("Wrong Input - ProfitMax_Rec ");
+				throw new Exception("Wrong Input ");
 			}
 			nbop=0;
 			
@@ -86,13 +86,17 @@ public class SACDOS_Algorithms {
 			int[] W = (int[]) data[2]; //weights: les poids
 			int[] P = (int[]) data[3]; //profits
 			
+			System.out.println(" rec ");
+			
 			//resultat comprenant le N: espace d'etat, nombre des items et longeur des tableaux; nbop: nbr excutions; time: temps d'excution;
 			Object[] res = new Object[3];
 			
 			res[0]=i;
 			
 			long t0 = System.currentTimeMillis();
-			ProfitMax_Rec(i, C, W, P);
+			System.out.println(" rec ");
+			ProfitMax_Rec(i-1, C, W, P);
+			System.out.println(" rec ");
 			long time=System.currentTimeMillis()-t0;
 			
 			res[1]=nbop;

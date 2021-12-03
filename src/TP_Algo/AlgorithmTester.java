@@ -32,9 +32,9 @@ public class AlgorithmTester {
 		
 		//test sacados
 		
-		Method ProfitMax_Dyn_Envolope = SACDOS_Algorithms.class.getMethod("ProfitMax_Dyn_Envolope", Object[].class);
+		Method ProfitMax_Rec_Envolope = SACDOS_Algorithms.class.getMethod("ProfitMax_Rec_Envolope", Object[].class);
 		
-		Object[] res2=testAlgorithm(SACDOS_DataGenerator.class,4, ProfitMax_Dyn_Envolope); //4 is N
+		Object[] res2=testAlgorithm(SACDOS_DataGenerator.class,4, ProfitMax_Rec_Envolope); //4 is N
 		
 		print(res2, "BOOM_SACDOS/"+ res2[0]+".csv");
 		
@@ -47,13 +47,6 @@ public class AlgorithmTester {
 		DataGenerator data =(DataGenerator) constructor.newInstance(complexity);;
 		Object[] data_generated = data.generateData();
 		
-		System.out.println(constructor);
-		System.out.println(algorithm);
-		
-		for (int i=0;i<data_generated.length;i++) {
-			System.out.println(data_generated[i]);
-		}
-		
 		int index=1;
 		
 		while (true) {
@@ -62,7 +55,7 @@ public class AlgorithmTester {
 				return (Object[]) (algorithm.invoke(null, new Object[]{needed_data}));
 			}
 			catch (Exception e) {
-				System.out.println(e);
+				System.out.println(e.getCause());
 				if(index < data_generated.length) {
 					index++;
 				}else {
