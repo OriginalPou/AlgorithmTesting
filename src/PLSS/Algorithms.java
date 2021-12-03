@@ -100,12 +100,9 @@ public class Algorithms {
 		
 		String X=(String) data[0];
 	    String Y=(String) data[1];
-	    System.out.println("c");
 	    int i= (int) data[2];
 	    long t0 = System.currentTimeMillis();
-	    System.out.println("c");
 	    int plls=plsscDynamique(X,Y);
-	    System.out.println("c");
 	    long time = System.currentTimeMillis()-t0;
 	    Object[] res= new Object[3];
 	    res[0]=plls;

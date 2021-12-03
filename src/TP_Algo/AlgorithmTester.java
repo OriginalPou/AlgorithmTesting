@@ -5,6 +5,9 @@ import PLSS.PllsDataGenerator;
 import NES.NES_DataGenerator;
 import NES.NES_Algorithms;
 
+import SACDOS.SACDOS_Algorithms;
+import SACDOS.SACDOS_DataGenerator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -17,11 +20,8 @@ public class AlgorithmTester {
 	
 
 	public static void main(String[] args) throws Exception {
-		/*
-		System.out.println(sumR_M_Envolope);
-		Constructor constructor = NES_DataGenerator.class.getConstructor(int.class);
-		System.out.println(constructor);
-		*/
+		
+		//test PLSS
 		
 		Method plsscDynamique_Env= Algorithms.class.getMethod("plsscDynamique_Env", Object[].class);
 		
@@ -29,12 +29,21 @@ public class AlgorithmTester {
 		
 		print(res_PLSS,"BOOM_PLSS/"+res_PLSS[0]+".csv");
 		
-		
+		//test NES
 		Method sumR_M_Envolope = NES_Algorithms.class.getMethod("sumR_M_Envolope", Object[].class);
+
 		
 		Object[] res =testAlgorithm(NES_DataGenerator.class, 0, sumR_M_Envolope);
 		
 		print(res, "BOOM/"+ res[0]+ ".csv");
+		
+		//test sacados
+		
+		Method ProfitMax_Rec_Envolope = SACDOS_Algorithms.class.getMethod("ProfitMax_Rec_Envolope", Object[].class);
+		
+		Object[] res2=testAlgorithm(SACDOS_DataGenerator.class,4, ProfitMax_Rec_Envolope); //4 is N
+		
+		print(res2, "BOOM_SACDOS/"+ res2[0]+".csv");
 		
 		
 	}
